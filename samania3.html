@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">.
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&family=Xanh+Mono:ital@1&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Island+Moments&family=Poor+Story&family=Xanh+Mono:ital@1&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Pinyon Script', cursive;
+  margin: 0 auto;
+  max-width: 700px;
+  background: #FFC1CB;
+}
+div {
+  height: 200px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: font-family: 'Island Moments', cursive;
+font-family: 'Poor Story', cursive;
+font-family: 'Xanh Mono', monospace;
+  text-align: center;
+  font-size: 75px;
+  color: #DD76BF;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: #C83D95;
+  margin: 0px 0 70px 0;
+}
+p {
+  font-family: 'Poor Story', cursive;
+  font-family: 'Xanh Mono', monospace;
+  color: rgba(6,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(500,650,780,0), rgba(600,800,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(900,200,899,8), rgba(0,0,0,.5));
+  background: -moz-linear-gradient(bottom, rgba(600,700,1000,2), rgba(0,0,0,.5));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1
+}
+
+.first{
+  background-image: url("https://i.pinimg.com/736x/a4/55/61/a45561637e18a2d588a88342abb116e9.jpg");
+}
+.second{
+  background-image: url("https://m3.healio.com/~/media/slack-news/stock-images/fm_im/u/ultraprocessed-foods.jpg");
+}
+.dessert{
+  background-image: url("https://www.heart.org/-/media/Images/Healthy-Living/Healthy-Eating/Superfoods.png?h=391&w=800&hash=D62072BD25A36A59D8577B45FD492253");
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+input {
+	font-size: 22px;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Meal Time</h1>
+<h2>Home Sweet Home</h2>
+<div class="first">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Ideal Breakfast Pancakes and Chocoloate Milk<span class="price">$14</span><br />
+  <small>We serve pancakes with syrup and customized drinks customes may desire.  </small></p>
+</div>
+
+<div class="second">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Rich and Creamy Ice Cream<span class="price">$22</span><br />
+  <small>Our icecream is made with rich whole cream milk and with natural vanilla beans.</small></p>
+</div>
+  
+<div class="dessert">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Healthy Breakfast Toasts<span class="price">$8</span><br />
+  <small>We make customized breakfast toasts for whatever toppings customers desire.</small></p>
+</div>
+<br><br>
+  <input id="Name" placeholder="name">
+  <input id="Email" placeholder="Your email">
+  <input id="submit" type="submit">
+<br><br>
+ 
+
+
+
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDDiq4RUocmnGi3HyK_evA3ynet3vbcPIg",
+    authDomain: "samjthx.firebaseapp.com",
+    projectId: "samjthx",
+    storageBucket: "samjthx.appspot.com",
+    messagingSenderId: "205043683971",
+    appId: "1:205043683971:web:c270faf69059a3e20d81b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  
+  const db = getDatabase(app);
+  const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
+const itemsList = ["Ideal Breakfast Pancakes and Chocoloate Milk", "Rich and Creamy Ice Cream", "Healthy Breakfast Toasts"] 
+  document.querySelector('#submit').addEventListener('click', Submit)
+  const quantities = document.querySelectorAll(".quantities")
+  const prices = document.querySelectorAll(".price") 
+  
+    
+  function Submit() {
+    const timestamp = buildTimestamp()
+	   let total = 0
+	  
+	  let cart = { }
+	  for  (let i=0; i<quantities.length; i=i+1) {
+	  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+			let price = prices[i].innerHTML.replace('$', '')
+			total = total + quantities[i].value * price 
+
+				  	
+	  	}
+		quantities[i].value = ""
+
+	  }
+  
+    set(ref(db, timestamp), {
+  	  Name: Name.value,
+        email: Email.value,
+	 cart: cart, 
+	    totalPrice: total,
+	    paid: "not yet",
+    });
+
+    Name.value = ""
+    Email.value = ""
+  
+  }
+
+  function buildTimestamp() {
+    const now = new Date();
+    let timestamp = now.getFullYear().toString() + "/";
+    //const month = now.toLocaleString('default', { month: 'long' });
+
+    let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+    month = month.toString()
+    month = addLeadingZero(month)
+    timestamp += month + "/"; 
+
+    let date = now.getDate().toString()
+    date = addLeadingZero(date)
+    timestamp += date + "/";
+
+    let hours = now.getHours().toString()
+    hours = addLeadingZero(hours)
+    timestamp += hours + ":";
+
+    let minutes = now.getMinutes().toString()
+    minutes = addLeadingZero(minutes)
+    timestamp += minutes + ":";
+
+    let seconds = now.getSeconds().toString()
+    seconds = addLeadingZero(seconds)
+    timestamp += seconds;
+
+    return timestamp
+  }
+
+  function addLeadingZero(units) {
+  	if (units.length < 2) {
+  		units = "0" + units
+  	}
+  	return units
+  }
+</script>
